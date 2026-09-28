@@ -1,0 +1,28 @@
+{
+  "name": "misan-bot",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "start": "node dist/index.js",
+    "deploy:commands": "ts-node src/deploy.ts"
+  },
+  "dependencies": {
+    "@misan/types": "*",
+    "@misan/config": "*",
+    "@misan/logger": "*",
+    "@misan/database": "*",
+    "@misan/permissions": "*",
+    "@misan/premium": "*",
+    "@misan/security": "*",
+    "@misan/utils": "*",
+    "discord.js": "^14.16.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

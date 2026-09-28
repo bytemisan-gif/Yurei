@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yurei - Next-Gen Security & 600+ Command Discord Platform</title>
+  <meta name="description" content="Fortify, automate, and supercharge your Discord server with Yurei (developed by Misan). Real-time Anti-Nuke, 600+ commands, and custom bot vanity.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <style>
+    .hero-section {
+      text-align: center;
+      padding: 6rem 1rem 4rem;
+      position: relative;
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--text-secondary);
+      max-width: 760px;
+      margin: 0 auto 2.5rem;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .stat-card {
+      padding: 1.75rem 1rem;
+      text-align: center;
+      border-radius: 1rem;
+    }
+    .stat-number {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #fff;
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    /* Terminal Showcase */
+    .terminal-container {
+      max-width: 900px;
+      margin: 4rem auto;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #090b10;
+      box-shadow: 0 25px 60px -15px rgba(0,0,0,0.8), 0 0 40px rgba(99, 102, 241, 0.15);
+    }
+    .terminal-header {
+      background: #11141c;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .mac-dots {
+      display: flex;
+      gap: 0.45rem;
+    }
+    .mac-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+    .terminal-body {
+      padding: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.7;
+      text-align: left;
+    }
+    .log-line {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.35rem;
+    }
+    .log-time { color: var(--text-muted); }
+    .log-threat { color: #f87171; font-weight: 700; }
+    .log-action { color: #34d399; font-weight: 700; }
+    .log-info { color: #818cf8; }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+    .feature-card {
+      padding: 2rem;
+      border-radius: 1.25rem;
+      text-align: left;
+    }
+    .feature-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+    }
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.6rem;
+    }
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="bot-avatar-badge">
+          Y
+          <div class="phone-indicator" title="Connected via Discord Mobile (iOS)">
+            <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+          </div>
+        </div>
+        <div>
+          <span class="logo-text">Yurei</span>
+          <span class="logo-dev">by Misan</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="commands/index.html" class="nav-link">Commands (600+)</a></li>
+        <li><a href="premium/index.html" class="nav-link premium-link">★ Premium</a></li>
+        <li><a href="dashboard/index.html" class="nav-link">Dashboard</a></li>
+        <li><a href="docs/index.html" class="nav-link">Docs</a></li>
+        <li><a href="status/index.html" class="nav-link">Status</a></li>
+      </ul>
+
+      <div class="nav-cta-group">
+        <a href="https://discord.com/oauth2/authorize?client_id=1550514533208952894&permissions=8&scope=bot%20applications.commands" target="_blank" class="btn btn-primary btn-sm">
+          Add Bot
+        </a>
+        <a href="dashboard/index.html" class="btn btn-secondary btn-sm">
+          Dashboard
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="container">
+    <section class="hero-section">
+      <div style="margin-bottom: 1.5rem;">
+        <span class="badge badge-purple">
+          ⚡ 600+ Commands • Anti-Nuke Engine • Developed by Misan
+        </span>
+      </div>
+
+      <h1 class="hero-title">
+        Fortify, Automate & Supercharge <br>
+        <span class="text-gradient">Your Discord Server</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Meet <strong style="color: #fff;">Yurei</strong>, the uncompromising Discord powerhouse engineered by <strong style="color: #fff;">Misan</strong>. Sub-second Anti-Nuke defense, Zynrax-style server vanity customization, 600+ commands, and real-time dashboard controls.
+      </p>
+
+      <div class="cta-row">
+        <a href="https://discord.com/oauth2/authorize?client_id=1550514533208952894&permissions=8&scope=bot%20applications.commands" target="_blank" class="btn btn-primary btn-lg">
+          Add Yurei to Discord
+        </a>
+        <a href="dashboard/index.html" class="btn btn-secondary btn-lg">
+          Open Web Dashboard
+        </a>
+        <a href="premium/index.html" class="btn btn-gold btn-lg">
+          ★ Get Premium
+        </a>
+        <a href="https://discord.gg/M4P4Qrt6G5" target="_blank" class="btn btn-secondary btn-lg" style="color: #a5b4fc; border-color: rgba(99,102,241,0.3);">
+          Support Discord
+        </a>
+      </div>
+
+      <!-- Live Stats Bar -->
+      <div class="stats-bar">
+        <div class="glass stat-card">
+          <span class="stat-number">1,450+</span>
+          <span class="stat-label">Protected Servers</span>
+        </div>
+        <div class="glass stat-card">
+          <span class="stat-number">620,000+</span>
+          <span class="stat-label">Active Members</span>
+        </div>
+        <div class="glass stat-card">
+          <span class="stat-number">600+</span>
+          <span class="stat-label">Real Commands</span>
+        </div>
+        <div class="glass stat-card">
+          <span class="stat-number" style="color: #34d399;">99.99%</span>
+          <span class="stat-label">System Uptime</span>
+        </div>
+      </div>
+
+      <!-- Terminal Live Telemetry Showcase -->
+      <div class="terminal-container">
+        <div class="terminal-header">
+          <div class="mac-dots">
+            <span class="mac-dot dot-red"></span>
+            <span class="mac-dot dot-yellow"></span>
+            <span class="mac-dot dot-green"></span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">
+            Yurei Autonomous Security Core v2.4 — Live Audit Interception
+          </span>
+          <span class="badge badge-green" style="font-size: 0.65rem;">ACTIVE MONITOR</span>
+        </div>
+        <div class="terminal-body">
+          <div class="log-line">
+            <span class="log-time">[07:44:02.102]</span>
+            <span class="log-info">[GATEWAY]</span>
+            <span>WebSocket stream synchronized with Discord iOS client profile.</span>
+          </div>
+          <div class="log-line">
+            <span class="log-time">[07:44:05.419]</span>
+            <span class="log-threat">[THREAT-DETECT]</span>
+            <span>Audit log mass-kick pattern detected (Actor: RogueMod#0001, 4 kicks/3s).</span>
+          </div>
+          <div class="log-line">
+            <span class="log-time">[07:44:05.512]</span>
+            <span class="log-action">[ACTION-TAKEN]</span>
+            <span>Actor quarantined! Administrative roles stripped in 93ms. Server locked down.</span>
+          </div>
+          <div class="log-line">
+            <span class="log-time">[07:44:05.580]</span>
+            <span class="log-action">[DISPATCH]</span>
+            <span>Audit alert posted to #security-logs. Owner (1354252509010722817) notified.</span>
+          </div>
+          <div class="log-line">
+            <span class="log-time">[07:44:09.840]</span>
+            <span class="log-info">[VANITY-ENGINE]</span>
+            <span>Server-specific bot identity synced with PostgreSQL (Prefix: !, Avatar: Custom).</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platform Highlights -->
+      <h2 style="font-size: 2.2rem; font-weight: 800; margin-top: 4rem; color: #fff;">
+        Built for Demanding Server Communities
+      </h2>
+      <p style="color: var(--text-secondary); max-width: 600px; margin: 0.5rem auto 2rem;">
+        Everything you need to safeguard, automate, and entertain your community without installing dozens of separate bots.
+      </p>
+
+      <div class="features-grid">
+        <div class="glass glass-hover feature-card">
+          <div class="feature-icon-box" style="background: rgba(239, 68, 68, 0.15); color: #f87171;">🛡️</div>
+          <h3>Sub-Second Anti-Nuke</h3>
+          <p>Instant defense against rogue admins. Real-time interception of mass bans, kicks, channel deletions, and role tampering with automatic lockdown.</p>
+        </div>
+
+        <div class="glass glass-hover feature-card">
+          <div class="feature-icon-box" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">✨</div>
+          <h3>Zynrax-Style Server Vanity</h3>
+          <p>Customize Yurei's appearance per-server: change bot nickname, avatar image, banner image, bio text, and custom prefix (!, @, #, $, etc.).</p>
+        </div>
+
+        <div class="glass glass-hover feature-card">
+          <div class="feature-icon-box" style="background: rgba(99, 102, 241, 0.15); color: #818cf8;">⚡</div>
+          <h3>600+ Real Slash Commands</h3>
+          <p>From deep moderation and antinuke emergency controls to dynamic voice hubs, ticket systems, music, economy, giveaways, and leveling.</p>
+        </div>
+
+        <div class="glass glass-hover feature-card">
+          <div class="feature-icon-box" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">📊</div>
+          <h3>Modern Web Dashboard</h3>
+          <p>Manage your entire server settings visually. Configure antinuke limits, toggle automod filters, customize embeds, and sync directly to PostgreSQL.</p>
+        </div>
+
+        <div class="glass glass-hover feature-card">
+          <div class="feature-icon-box" style="background: rgba(6, 182, 212, 0.15); color: #22d3ee;">🎙️</div>
+          <h3>Join-to-Create Voice Hubs</h3>
+          <p>Dynamic temporary voice rooms created on demand when members join. Automatically deleted when empty to keep your channels clean.</p>
+        </div>
+
+        <div class="glass glass-hover feature-card">
+          <div class="feature-icon-box" style="background: rgba(168, 85, 247, 0.15); color: #c084fc;">🎫</div>
+          <h3>Ticket & Verification Panels</h3>
+          <p>Interactive Discord button panels with modal forms, automated role assignment, staff claiming, and HTML transcript exports.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo-group" style="margin-bottom: 1rem;">
+          <div class="bot-avatar-badge">Y</div>
+          <div>
+            <span class="logo-text">Yurei</span>
+            <span class="logo-dev">by Misan</span>
+          </div>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; max-width: 320px;">
+          The ultimate 600+ command security and community platform for Discord. Engineered for performance and total peace of mind.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="commands/index.html">Commands (600+)</a></li>
+          <li><a href="premium/index.html">Premium Tiers</a></li>
+          <li><a href="dashboard/index.html">Server Dashboard</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="docs/index.html">Documentation</a></li>
+          <li><a href="status/index.html">System Status</a></li>
+          <li><a href="https://discord.gg/M4P4Qrt6G5" target="_blank">Support Discord</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Bot Details</h4>
+        <ul>
+          <li style="font-size: 0.85rem; color: var(--text-muted);">App ID: 1550514533208952894</li>
+          <li style="font-size: 0.85rem; color: var(--text-muted);">Developer: Misan</li>
+          <li style="font-size: 0.85rem; color: var(--text-muted);">Owner ID: 1354252509010722817</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Yurei Platform. Developed by Misan. All rights reserved.</span>
+      <span>yurei.site • Connected via Discord iOS</span>
+    </div>
+  </footer>
+
+</body>
+</html>

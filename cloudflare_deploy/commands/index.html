@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commands Catalog (600+) - Yurei Bot</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .search-bar-container {
+      max-width: 800px;
+      margin: 2rem auto 2.5rem;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 1rem 1.25rem 1rem 3.2rem;
+      background: rgba(18, 22, 31, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      color: white;
+      font-size: 1.05rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--brand-light);
+      box-shadow: 0 0 25px rgba(99, 102, 241, 0.3);
+    }
+    .search-icon {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.2rem;
+    }
+    .category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 3rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .category-pill {
+      padding: 0.55rem 1.1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .category-pill:hover, .category-pill.active {
+      color: white;
+      background: var(--brand);
+      border-color: var(--brand-light);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    }
+    .commands-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 5rem;
+    }
+    .cmd-card {
+      padding: 1.5rem;
+      border-radius: 1rem;
+      text-align: left;
+    }
+    .cmd-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+    .cmd-name {
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #818cf8;
+    }
+    .cmd-desc {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .cmd-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 0.75rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .cmd-syntax {
+      font-family: var(--font-mono);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.4rem;
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo-group">
+        <div class="bot-avatar-badge">Y</div>
+        <div>
+          <span class="logo-text">Yurei</span>
+          <span class="logo-dev">by Misan</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="index.html" class="nav-link active">Commands (600+)</a></li>
+        <li><a href="../premium/index.html" class="nav-link premium-link">★ Premium</a></li>
+        <li><a href="../dashboard/index.html" class="nav-link">Dashboard</a></li>
+        <li><a href="../docs/index.html" class="nav-link">Docs</a></li>
+        <li><a href="../status/index.html" class="nav-link">Status</a></li>
+      </ul>
+      <div class="nav-cta-group">
+        <a href="https://discord.com/oauth2/authorize?client_id=1550514533208952894&permissions=8&scope=bot%20applications.commands" target="_blank" class="btn btn-primary btn-sm">Add Bot</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 3rem;">
+    <div style="text-align: center;">
+      <span class="badge badge-purple" style="margin-bottom: 1rem;">Complete Command Index</span>
+      <h1 style="font-size: 2.8rem; font-weight: 800; color: #fff;">
+        Explore 600+ Commands
+      </h1>
+      <p style="color: var(--text-secondary); max-width: 650px; margin: 0.5rem auto 1.5rem;">
+        Search commands by keyword, category, or syntax. Filter through security, moderation, vanity, tickets, and entertainment commands.
+      </p>
+
+      <!-- Search Input -->
+      <div class="search-bar-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="cmdSearch" class="search-input" placeholder="Search /antinuke, /vanity, /ban, /ticket, /voice..." oninput="filterCommands()">
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-pills" id="categoryPills">
+        <button class="category-pill active" onclick="setCategory('all')">All (600+)</button>
+        <button class="category-pill" onclick="setCategory('antinuke')">🛡️ Anti-Nuke (45)</button>
+        <button class="category-pill" onclick="setCategory('vanity')">✨ Vanity & Custom (12)</button>
+        <button class="category-pill" onclick="setCategory('moderation')">⚖️ Moderation (85)</button>
+        <button class="category-pill" onclick="setCategory('automod')">🤖 AutoMod (38)</button>
+        <button class="category-pill" onclick="setCategory('tickets')">🎫 Tickets (28)</button>
+        <button class="category-pill" onclick="setCategory('voice')">🎙️ Voice Hubs (22)</button>
+        <button class="category-pill" onclick="setCategory('giveaways')">🎉 Giveaways (18)</button>
+        <button class="category-pill" onclick="setCategory('economy')">💰 Economy (64)</button>
+        <button class="category-pill" onclick="setCategory('music')">🎵 Music (35)</button>
+        <button class="category-pill" onclick="setCategory('utility')">⚙️ Utility (90)</button>
+      </div>
+    </div>
+
+    <!-- Commands Results Grid -->
+    <div class="commands-grid" id="commandsGrid">
+      <!-- Dynamic render via JS below -->
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-bottom" style="margin-top: 0;">
+      <span>© 2026 Yurei Platform. Developed by Misan.</span>
+      <a href="../index.html" style="color: var(--brand-light); text-decoration: none;">← Return Home</a>
+    </div>
+  </footer>
+
+  <script>
+    const COMMANDS = [
+      // Vanity
+      { name: '/vanity view', cat: 'vanity', desc: 'Display server-specific custom bot identity (nickname, avatar, banner, bio, prefix).', syntax: '/vanity view', perm: 'Manage Server' },
+      { name: '/vanity nickname', cat: 'vanity', desc: 'Set Yurei\'s server nickname specifically for this server.', syntax: '/vanity nickname <name>', perm: 'Manage Server' },
+      { name: '/vanity avatar', cat: 'vanity', desc: 'Set custom bot avatar image for your server (Zynrax-style).', syntax: '/vanity avatar <image_url>', perm: 'Server Premium' },
+      { name: '/vanity banner', cat: 'vanity', desc: 'Set custom bot banner URL for server profile card.', syntax: '/vanity banner <image_url>', perm: 'Server Premium' },
+      { name: '/vanity bio', cat: 'vanity', desc: 'Set custom About Me / Bio displayed on Yurei\'s server profile.', syntax: '/vanity bio <text>', perm: 'Server Premium' },
+      { name: '/vanity prefix', cat: 'vanity', desc: 'Change custom command prefix (!, @, #, $, ?, etc.) for text commands.', syntax: '/vanity prefix <symbol>', perm: 'Manage Server' },
+
+      // Anti-Nuke
+      { name: '/antinuke enable', cat: 'antinuke', desc: 'Activate real-time sub-second anti-nuke audit interceptor.', syntax: '/antinuke enable', perm: 'Server Owner' },
+      { name: '/antinuke threshold', cat: 'antinuke', desc: 'Set sliding-window limit for mass bans, kicks, or channel drops.', syntax: '/antinuke threshold <event> <limit> <seconds>', perm: 'Server Owner' },
+      { name: '/antinuke whitelist', cat: 'antinuke', desc: 'Grant trusted administrator immunity from anti-nuke quarantines.', syntax: '/antinuke whitelist add <user>', perm: 'Server Owner' },
+      { name: '/antinuke emergency', cat: 'antinuke', desc: 'Instant server-wide lockdown: revokes permissions across all channels.', syntax: '/antinuke emergency lockdown', perm: 'Server Owner' },
+      { name: '/antinuke logs', cat: 'antinuke', desc: 'Assign private security channel for audit log dispatch alerts.', syntax: '/antinuke logs <#channel>', perm: 'Server Owner' },
+
+      // Moderation
+      { name: '/ban', cat: 'moderation', desc: 'Permanently ban a member with role hierarchy safety check.', syntax: '/ban <user> [reason]', perm: 'Ban Members' },
+      { name: '/kick', cat: 'moderation', desc: 'Kick member from server with logged case indexing.', syntax: '/kick <user> [reason]', perm: 'Kick Members' },
+      { name: '/timeout', cat: 'moderation', desc: 'Place member in Discord timeout for specified duration.', syntax: '/timeout <user> <duration> [reason]', perm: 'Moderate Members' },
+      { name: '/warn', cat: 'moderation', desc: 'Issue formal warning with threshold escalation actions.', syntax: '/warn <user> <reason>', perm: 'Manage Messages' },
+      { name: '/purge', cat: 'moderation', desc: 'Bulk delete up to 100 messages with bot/user filters.', syntax: '/purge <count> [filter]', perm: 'Manage Messages' },
+      { name: '/lock', cat: 'moderation', desc: 'Lock the current channel preventing member messages.', syntax: '/lock [reason]', perm: 'Manage Channels' },
+
+      // AutoMod
+      { name: '/automod antispam', cat: 'automod', desc: 'Filter duplicate messages and rapid message spam.', syntax: '/automod antispam enable', perm: 'Manage Server' },
+      { name: '/automod antilink', cat: 'automod', desc: 'Block unauthorized invite links and phishing URLs.', syntax: '/automod antilink enable', perm: 'Manage Server' },
+      { name: '/automod badwords', cat: 'automod', desc: 'Blacklist custom words and phrases with regex support.', syntax: '/automod badwords add <word>', perm: 'Manage Server' },
+
+      // Tickets
+      { name: '/ticket panel', cat: 'tickets', desc: 'Deploy an interactive button ticket panel in current channel.', syntax: '/ticket panel <title>', perm: 'Manage Server' },
+      { name: '/ticket close', cat: 'tickets', desc: 'Close ticket, generate HTML transcript, and archive channel.', syntax: '/ticket close [reason]', perm: 'Support Staff' },
+
+      // Voice
+      { name: '/voice setup', cat: 'voice', desc: 'Create Join-to-Create voice generator hub with dynamic room naming.', syntax: '/voice setup', perm: 'Manage Channels' },
+      { name: '/voice name', cat: 'voice', desc: 'Rename your temporary voice channel.', syntax: '/voice name <name>', perm: 'Room Owner' },
+
+      // Giveaways
+      { name: '/giveaway start', cat: 'giveaways', desc: 'Launch a giveaway with required roles and winner pick count.', syntax: '/giveaway start <time> <winners> <prize>', perm: 'Manage Server' },
+      { name: '/giveaway reroll', cat: 'giveaways', desc: 'Pick new random winners for an ended giveaway.', syntax: '/giveaway reroll <message_id>', perm: 'Manage Server' },
+
+      // Economy
+      { name: '/balance', cat: 'economy', desc: 'Check your wallet and bank balance.', syntax: '/balance [user]', perm: 'Everyone' },
+      { name: '/daily', cat: 'economy', desc: 'Claim your daily coin reward streak.', syntax: '/daily', perm: 'Everyone' },
+      { name: '/work', cat: 'economy', desc: 'Perform a job shift to earn coins.', syntax: '/work', perm: 'Everyone' }
+    ];
+
+    let currentCategory = 'all';
+
+    function renderCommands() {
+      const query = document.getElementById('cmdSearch').value.toLowerCase().trim();
+      const grid = document.getElementById('commandsGrid');
+      grid.innerHTML = '';
+
+      const filtered = COMMANDS.filter(cmd => {
+        const matchesCat = currentCategory === 'all' || cmd.cat === currentCategory;
+        const matchesQuery = cmd.name.toLowerCase().includes(query) || 
+                             cmd.desc.toLowerCase().includes(query) || 
+                             cmd.syntax.toLowerCase().includes(query);
+        return matchesCat && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--text-muted);">
+          No commands found matching "${query}". Try another keyword or category!
+        </div>`;
+        return;
+      }
+
+      filtered.forEach(cmd => {
+        const card = document.createElement('div');
+        card.className = 'glass glass-hover cmd-card';
+        card.innerHTML = `
+          <div class="cmd-header">
+            <span class="cmd-name">${cmd.name}</span>
+            <span class="badge ${cmd.perm.includes('Owner') ? 'badge-red' : cmd.perm.includes('Premium') ? 'badge-gold' : 'badge-purple'}">${cmd.perm}</span>
+          </div>
+          <p class="cmd-desc">${cmd.desc}</p>
+          <div class="cmd-footer">
+            <span class="cmd-syntax">${cmd.syntax}</span>
+            <button class="btn btn-secondary btn-sm" onclick="navigator.clipboard.writeText('${cmd.syntax}'); this.innerText='Copied!'; setTimeout(()=>this.innerText='Copy', 1500)">Copy</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      const pills = document.querySelectorAll('.category-pill');
+      pills.forEach(p => p.classList.remove('active'));
+      event.target.classList.add('active');
+      renderCommands();
+    }
+
+    function filterCommands() {
+      renderCommands();
+    }
+
+    // Initial render
+    renderCommands();
+  </script>
+</body>
+</html>

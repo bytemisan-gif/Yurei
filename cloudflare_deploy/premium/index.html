@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Plans - Yurei Platform</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .billing-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(18, 22, 31, 0.8);
+      padding: 0.4rem 0.6rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border-color);
+      margin: 2rem auto 3rem;
+    }
+    .toggle-btn {
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      border: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .toggle-btn.active {
+      background: var(--brand);
+      color: white;
+      box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+    }
+    .price-card {
+      padding: 2.25rem 1.75rem;
+      border-radius: 1.25rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .price-card.featured {
+      border: 2px solid #f59e0b;
+      box-shadow: 0 0 35px rgba(245, 158, 11, 0.2);
+    }
+    .featured-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: black;
+      font-weight: 800;
+      font-size: 0.72rem;
+      padding: 0.25rem 0.85rem;
+      border-radius: 9999px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .plan-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 0.4rem;
+    }
+    .plan-desc {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      min-height: 40px;
+      margin-bottom: 1.5rem;
+    }
+    .plan-price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+    .plan-price span {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+      font-size: 0.9rem;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text-secondary);
+    }
+    .feature-item.highlight {
+      color: #fcd34d;
+      font-weight: 600;
+    }
+
+    /* Vanity Showcase Box */
+    .vanity-showcase {
+      max-width: 900px;
+      margin: 4rem auto 5rem;
+      padding: 2.5rem;
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(99, 102, 241, 0.05));
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo-group">
+        <div class="bot-avatar-badge">Y</div>
+        <div>
+          <span class="logo-text">Yurei</span>
+          <span class="logo-dev">by Misan</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../commands/index.html" class="nav-link">Commands (600+)</a></li>
+        <li><a href="index.html" class="nav-link active premium-link">★ Premium</a></li>
+        <li><a href="../dashboard/index.html" class="nav-link">Dashboard</a></li>
+        <li><a href="../docs/index.html" class="nav-link">Docs</a></li>
+        <li><a href="../status/index.html" class="nav-link">Status</a></li>
+      </ul>
+      <div class="nav-cta-group">
+        <a href="https://discord.gg/M4P4Qrt6G5" target="_blank" class="btn btn-gold btn-sm">Support Discord</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 3rem; text-align: center;">
+    <span class="badge badge-gold">Unlock Next-Level Capabilities</span>
+    <h1 style="font-size: 2.8rem; font-weight: 800; color: #fff; margin-top: 0.8rem;">
+      Elevate Your Server with <span class="text-gold-gradient">Yurei Premium</span>
+    </h1>
+    <p style="color: var(--text-secondary); max-width: 650px; margin: 0.5rem auto 1rem;">
+      Get Zynrax-style server bot customization, zero cooldowns, emergency lockdown locks, and priority support.
+    </p>
+
+    <!-- Billing Switcher -->
+    <div class="billing-toggle">
+      <button class="toggle-btn active" id="btnMonthly" onclick="setBilling('monthly')">Monthly Billing</button>
+      <button class="toggle-btn" id="btnYearly" onclick="setBilling('yearly')">Yearly (Save 20% + 2 Months Free)</button>
+    </div>
+
+    <!-- Pricing Cards Grid -->
+    <div class="pricing-grid">
+      <!-- Free Plan -->
+      <div class="glass price-card">
+        <h3 class="plan-title">Community</h3>
+        <p class="plan-desc">Core protection and 600+ commands for everyday community servers.</p>
+        <div class="plan-price">Free</div>
+        <ul class="feature-list">
+          <li class="feature-item">✓ Standard Anti-Nuke Detection</li>
+          <li class="feature-item">✓ 600+ Slash & Text Commands</li>
+          <li class="feature-item">✓ Custom Prefix Selection (!, @, #, $)</li>
+          <li class="feature-item">✓ Up to 3 Join-to-Create Hubs</li>
+          <li class="feature-item">✓ Standard Web Dashboard</li>
+          <li class="feature-item" style="color: var(--text-muted);">✗ Custom Bot Avatar in Server</li>
+          <li class="feature-item" style="color: var(--text-muted);">✗ Custom Bot Banner in Server</li>
+          <li class="feature-item" style="color: var(--text-muted);">✗ Custom Server Bot Bio</li>
+        </ul>
+        <a href="https://discord.com/oauth2/authorize?client_id=1550514533208952894&permissions=8&scope=bot%20applications.commands" target="_blank" class="btn btn-secondary" style="width: 100%;">
+          Invite Free Bot
+        </a>
+      </div>
+
+      <!-- Server Premium Tier 1 -->
+      <div class="glass price-card">
+        <h3 class="plan-title">Server Tier 1</h3>
+        <p class="plan-desc">For growing servers wanting enhanced security and custom bot identity.</p>
+        <div class="plan-price" id="t1Price">$4.99<span>/mo</span></div>
+        <ul class="feature-list">
+          <li class="feature-item">✓ Everything in Community</li>
+          <li class="feature-item highlight">★ Custom Bot Avatar (Per-Server)</li>
+          <li class="feature-item highlight">★ Custom Bot Nickname & Prefix</li>
+          <li class="feature-item">✓ 0.2s Audit Log Threat Isolation</li>
+          <li class="feature-item">✓ 15 Dynamic Voice Hubs</li>
+          <li class="feature-item">✓ Zero Command Cooldowns</li>
+        </ul>
+        <a href="https://discord.gg/M4P4Qrt6G5" target="_blank" class="btn btn-primary" style="width: 100%;">
+          Claim in Discord Support
+        </a>
+      </div>
+
+      <!-- Server Premium Tier 2 (Featured) -->
+      <div class="glass price-card featured">
+        <div class="featured-badge">MOST POPULAR • ZYNRAX STYLE</div>
+        <h3 class="plan-title" style="color: #fbbf24;">Server Tier 2</h3>
+        <p class="plan-desc">The complete package with full custom avatar, banner, bio, and emergency tools.</p>
+        <div class="plan-price" id="t2Price">$9.99<span>/mo</span></div>
+        <ul class="feature-list">
+          <li class="feature-item highlight">★ Custom Bot Avatar (Per-Server)</li>
+          <li class="feature-item highlight">★ Custom Bot Profile Banner (Per-Server)</li>
+          <li class="feature-item highlight">★ Custom About Me / Bio in Server</li>
+          <li class="feature-item highlight">★ Custom Prefix (!, @, #, $, ?, etc.)</li>
+          <li class="feature-item">✓ Sub-second Anti-Nuke Containment</li>
+          <li class="feature-item">✓ Unlimited Voice Hubs & Tickets</li>
+          <li class="feature-item">✓ Emergency Lockdown Switch</li>
+          <li class="feature-item">✓ VIP Role in Support Server</li>
+        </ul>
+        <a href="https://discord.gg/M4P4Qrt6G5" target="_blank" class="btn btn-gold" style="width: 100%;">
+          Purchase via Discord Ticket
+        </a>
+      </div>
+
+      <!-- Lifetime Tier -->
+      <div class="glass price-card">
+        <h3 class="plan-title">Lifetime</h3>
+        <p class="plan-desc">Pay once, own permanent Tier 2 server premium forever.</p>
+        <div class="plan-price">$49.99<span>/one-time</span></div>
+        <ul class="feature-list">
+          <li class="feature-item highlight">★ Permanent Lifetime Server Premium</li>
+          <li class="feature-item highlight">★ Transferable to any of your servers</li>
+          <li class="feature-item highlight">★ Full Bot Vanity (Avatar, Banner, Bio)</li>
+          <li class="feature-item">✓ Instant Activation by Developer Misan</li>
+          <li class="feature-item">✓ Direct 1-on-1 Developer Support</li>
+          <li class="feature-item">✓ Permanent VIP Patron Status</li>
+        </ul>
+        <a href="https://discord.gg/M4P4Qrt6G5" target="_blank" class="btn btn-gold" style="width: 100%;">
+          Claim Lifetime in Discord
+        </a>
+      </div>
+    </div>
+
+    <!-- Zynrax-Style Vanity Highlight Section -->
+    <div class="vanity-showcase">
+      <span class="badge badge-gold" style="margin-bottom: 0.75rem;">EXCLUSIVE PREMIUM FEATURE</span>
+      <h2 style="font-size: 2rem; font-weight: 800; color: white;">
+        Change Bot Avatar, Banner & Bio In Your Server
+      </h2>
+      <p style="color: var(--text-secondary); max-width: 650px; margin: 0.5rem auto 1.5rem; font-size: 0.95rem;">
+        With Yurei Server Premium, your members will see Yurei customized exclusively for your server—custom avatar image, custom server profile banner, custom About Me, and custom prefix!
+      </p>
+
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="../dashboard/index.html" class="btn btn-primary">
+          Test in Dashboard Vanity Tab →
+        </a>
+        <a href="https://discord.gg/M4P4Qrt6G5" target="_blank" class="btn btn-secondary">
+          Open Purchase Ticket on Discord
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-bottom">
+      <span>© 2026 Yurei Platform. Developed by Misan.</span>
+      <a href="../index.html" style="color: var(--brand-light); text-decoration: none;">← Return Home</a>
+    </div>
+  </footer>
+
+  <script>
+    function setBilling(mode) {
+      const btnM = document.getElementById('btnMonthly');
+      const btnY = document.getElementById('btnYearly');
+      const t1 = document.getElementById('t1Price');
+      const t2 = document.getElementById('t2Price');
+
+      if (mode === 'yearly') {
+        btnM.classList.remove('active');
+        btnY.classList.add('active');
+        t1.innerHTML = '$3.99<span>/mo (Billed $47.88/yr)</span>';
+        t2.innerHTML = '$7.99<span>/mo (Billed $95.88/yr)</span>';
+      } else {
+        btnY.classList.remove('active');
+        btnM.classList.add('active');
+        t1.innerHTML = '$4.99<span>/mo</span>';
+        t2.innerHTML = '$9.99<span>/mo</span>';
+      }
+    }
+  </script>
+</body>
+</html>

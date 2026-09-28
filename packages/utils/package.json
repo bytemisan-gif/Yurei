@@ -1,0 +1,19 @@
+{
+  "name": "@misan/utils",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "dependencies": {
+    "@misan/types": "*",
+    "@misan/config": "*",
+    "discord.js": "^14.16.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}

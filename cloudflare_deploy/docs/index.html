@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation - Yurei</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo-group">
+        <div class="bot-avatar-badge">Y</div>
+        <div>
+          <span class="logo-text">Yurei</span>
+          <span class="logo-dev">by Misan</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../commands/index.html" class="nav-link">Commands (600+)</a></li>
+        <li><a href="../premium/index.html" class="nav-link premium-link">★ Premium</a></li>
+        <li><a href="../dashboard/index.html" class="nav-link">Dashboard</a></li>
+        <li><a href="index.html" class="nav-link active">Docs</a></li>
+        <li><a href="../status/index.html" class="nav-link">Status</a></li>
+      </ul>
+      <div class="nav-cta-group">
+        <a href="https://discord.com/oauth2/authorize?client_id=1550514533208952894&permissions=8&scope=bot%20applications.commands" target="_blank" class="btn btn-primary btn-sm">Add Bot</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding: 3rem 1.5rem 5rem; max-width: 900px;">
+    <span class="badge badge-purple">Documentation & Guides</span>
+    <h1 style="font-size: 2.5rem; font-weight: 800; color: white; margin: 0.5rem 0 2rem;">
+      Getting Started with Yurei
+    </h1>
+
+    <div class="glass" style="padding: 2rem; border-radius: 1rem; margin-bottom: 2rem; text-align: left;">
+      <h2 style="color: white; font-size: 1.4rem; margin-bottom: 0.75rem;">1. Adding Yurei to Your Server</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+        Click the invite link to add Yurei. Ensure that the <strong>Administrator</strong> permission or relevant permissions (Ban Members, Manage Channels, Manage Roles) are granted so Anti-Nuke and AutoMod can protect your community.
+      </p>
+      <a href="https://discord.com/oauth2/authorize?client_id=1550514533208952894&permissions=8&scope=bot%20applications.commands" target="_blank" class="btn btn-primary btn-sm">
+        Click to Invite Yurei
+      </a>
+    </div>
+
+    <div class="glass" style="padding: 2rem; border-radius: 1rem; margin-bottom: 2rem; text-align: left;">
+      <h2 style="color: white; font-size: 1.4rem; margin-bottom: 0.75rem;">2. Configuring Anti-Nuke Defense</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+        To activate real-time threat detection, run:
+      </p>
+      <pre style="background: #090b10; padding: 1rem; border-radius: 0.5rem; color: #818cf8; font-family: var(--font-mono); margin-bottom: 1rem;">/antinuke enable
+/antinuke logs #security-logs
+/antinuke whitelist add @TrustedAdmin</pre>
+      <p style="color: var(--text-muted); font-size: 0.85rem;">
+        Note: The bot creator (Misan - ID: 1354252509010722817) is permanently immune and exempt from all restrictions.
+      </p>
+    </div>
+
+    <div class="glass" style="padding: 2rem; border-radius: 1rem; margin-bottom: 2rem; text-align: left;">
+      <h2 style="color: white; font-size: 1.4rem; margin-bottom: 0.75rem;">3. Setting Up Bot Vanity (Zynrax-Style)</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+        With Server Premium, customize Yurei's avatar, banner, bio, and prefix using either the web dashboard or slash commands:
+      </p>
+      <pre style="background: #090b10; padding: 1rem; border-radius: 0.5rem; color: #fbbf24; font-family: var(--font-mono);">/vanity prefix !
+/vanity nickname Misan Guardian
+/vanity avatar https://i.imgur.com/your-avatar.png
+/vanity banner https://i.imgur.com/your-banner.png
+/vanity bio Official server bot for our community!</pre>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-bottom">
+      <span>© 2026 Yurei Platform. Developed by Misan.</span>
+      <a href="../index.html" style="color: var(--brand-light); text-decoration: none;">← Return Home</a>
+    </div>
+  </footer>
+</body>
+</html>

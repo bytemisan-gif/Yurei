@@ -1,0 +1,44 @@
+{
+  "name": "yurei-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Yurei - Production-Grade 600+ Command Multipurpose Discord Platform (Developed by Misan)",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "bot:dev": "npm run dev --workspace=apps/bot",
+    "bot:start": "npm run start --workspace=apps/bot",
+    "dashboard:dev": "npm run dev --workspace=apps/dashboard",
+    "dashboard:build": "npm run build --workspace=apps/dashboard",
+    "dashboard:start": "npm run start --workspace=apps/dashboard",
+    "api:dev": "npm run dev --workspace=apps/api",
+    "worker:dev": "npm run dev --workspace=apps/worker",
+    "db:generate": "npm run generate --workspace=packages/database",
+    "db:push": "npm run push --workspace=packages/database",
+    "db:migrate": "npm run migrate --workspace=packages/database",
+    "db:seed": "npm run seed --workspace=packages/database",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "keywords": [
+    "discord",
+    "discord-bot",
+    "antinuke",
+    "moderation",
+    "dashboard",
+    "prisma",
+    "typescript",
+    "multipurpose"
+  ],
+  "author": "Misan",
+  "license": "Proprietary",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

@@ -289,6 +289,10 @@ export function registerEventHandlers(client: MisanClient): void {
           break;
         }
       }
+    } catch {
+      // Autoresponder fail-safe
+    }
+
     // Custom Prefix Text Commands (Supports custom prefixes: !, @, #, $, ?, etc.)
     try {
       const settings = await prisma.guildSetting.findUnique({

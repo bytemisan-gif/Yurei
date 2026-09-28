@@ -9,6 +9,7 @@ import {
   ChannelType,
   PermissionsBitField,
   AuditLogEvent,
+  TextChannel,
 } from 'discord.js';
 import { MisanClient } from '../client/MisanClient';
 import { handleCommandInteraction } from './commandHandler';
@@ -285,7 +286,9 @@ export function registerEventHandlers(client: MisanClient): void {
           const reply = ar.response
             .replace(/{user}/g, `<@${message.author.id}>`)
             .replace(/{server}/g, message.guild.name);
-          await message.channel.send({ content: reply });
+          if ('send' in message.channel) {
+            await (message.channel as TextChannel).send({ content: reply });
+          }
           break;
         }
       }
@@ -295,7 +298,7 @@ export function registerEventHandlers(client: MisanClient): void {
 
     // Custom Prefix Text Commands (Supports custom prefixes: !, @, #, $, ?, etc.)
     try {
-      const settings = await prisma.guildSetting.findUnique({
+      const settings = await prisma.guildSettings.findUnique({
         where: { guildId: message.guild.id },
       });
       const prefix = settings?.prefix || '!';
@@ -314,7 +317,9 @@ export function registerEventHandlers(client: MisanClient): void {
             const reply = customCmd.response
               .replace(/{user}/g, `<@${message.author.id}>`)
               .replace(/{server}/g, message.guild.name);
-            await message.channel.send({ content: reply });
+            if ('send' in message.channel) {
+              await (message.channel as TextChannel).send({ content: reply });
+            }
           } else if (commandName === 'help') {
             await message.reply({
               content: `🌟 **Yurei Help**: Use \`/help\` for full slash commands or \`${prefix}<command>\` for text commands!\nCustom Server Prefix: \`${prefix}\``,

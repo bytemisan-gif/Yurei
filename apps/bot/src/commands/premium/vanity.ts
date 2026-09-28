@@ -96,7 +96,7 @@ export const VanityCommand: MisanCommand = {
           await me.setNickname(newNick);
         }
 
-        await prisma.guildSetting.upsert({
+        await prisma.guildSettings.upsert({
           where: { guildId: guild.id },
           create: { guildId: guild.id },
           update: {},
@@ -136,7 +136,7 @@ export const VanityCommand: MisanCommand = {
         return;
       }
 
-      await prisma.guildSetting.upsert({
+      await prisma.guildSettings.upsert({
         where: { guildId: guild.id },
         create: { guildId: guild.id, prefix: symbol },
         update: { prefix: symbol },
@@ -171,7 +171,7 @@ export const VanityCommand: MisanCommand = {
     }
 
     if (subcommand === 'view') {
-      const settings = await prisma.guildSetting.findUnique({
+      const settings = await prisma.guildSettings.findUnique({
         where: { guildId: guild.id },
       });
 

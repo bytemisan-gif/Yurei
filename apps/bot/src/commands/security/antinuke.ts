@@ -81,10 +81,10 @@ export const AntinukeCommand: MisanCommand = {
 
     switch (subcommand) {
       case 'enable': {
-        await prisma.guildSetting.upsert({
+        await prisma.antinukeConfig.upsert({
           where: { guildId: guild.id },
-          create: { guildId: guild.id, antinukeEnabled: true },
-          update: { antinukeEnabled: true },
+          create: { guildId: guild.id, enabled: true },
+          update: { enabled: true },
         });
 
         await interaction.reply({
@@ -99,10 +99,10 @@ export const AntinukeCommand: MisanCommand = {
       }
 
       case 'disable': {
-        await prisma.guildSetting.upsert({
+        await prisma.antinukeConfig.upsert({
           where: { guildId: guild.id },
-          create: { guildId: guild.id, antinukeEnabled: false },
-          update: { antinukeEnabled: false },
+          create: { guildId: guild.id, enabled: false },
+          update: { enabled: false },
         });
 
         await interaction.reply({
@@ -117,12 +117,12 @@ export const AntinukeCommand: MisanCommand = {
       }
 
       case 'status': {
-        const settings = await prisma.guildSetting.findUnique({
+        const settings = await prisma.antinukeConfig.findUnique({
           where: { guildId: guild.id },
         });
 
-        const isEnabled = settings?.antinukeEnabled ?? false;
-        const punishment = settings?.antinukePunishment ?? 'STRIP_ROLES';
+        const isEnabled = settings?.enabled ?? false;
+        const punishment = settings?.punishment ?? 'STRIP_ROLES';
 
         const embed = createBaseEmbed()
           .setTitle('🛡️ Yurei Anti-Nuke Configuration')
@@ -153,10 +153,10 @@ export const AntinukeCommand: MisanCommand = {
       case 'punishment': {
         const action = interaction.options.getString('action', true);
 
-        await prisma.guildSetting.upsert({
+        await prisma.antinukeConfig.upsert({
           where: { guildId: guild.id },
-          create: { guildId: guild.id, antinukePunishment: action },
-          update: { antinukePunishment: action },
+          create: { guildId: guild.id, punishment: action },
+          update: { punishment: action },
         });
 
         await interaction.reply({
